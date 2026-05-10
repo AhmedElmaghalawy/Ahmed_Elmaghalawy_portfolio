@@ -2,24 +2,28 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Ahmed AL Maghalawy | Interactive Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Ahmed AL Maghalawy | Portfolio</title>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Remix Icons -->
+  <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+  rel="stylesheet"/>
+
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Remix Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+  rel="stylesheet">
 
   <style>
 
@@ -55,14 +59,15 @@
     }
 
     .glass{
-      backdrop-filter:blur(20px);
-      -webkit-backdrop-filter:blur(20px);
+      backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
       transition:.3s;
     }
 
     body.light .glass{
       background:rgba(255,255,255,.55);
       border:1px solid rgba(255,255,255,.7);
+
       box-shadow:
       0 8px 30px rgba(0,0,0,.08),
       inset 0 1px 1px rgba(255,255,255,.7);
@@ -70,9 +75,10 @@
 
     body.dark .glass{
       background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.08);
+
       box-shadow:
-      0 8px 30px rgba(0,0,0,.4),
+      0 8px 30px rgba(0,0,0,.35),
       inset 0 1px 1px rgba(255,255,255,.08);
     }
 
@@ -81,7 +87,7 @@
       border-radius:50%;
       filter:blur(100px);
       opacity:.2;
-      animation:float 12s infinite alternate ease-in-out;
+      animation:float 10s infinite alternate ease-in-out;
     }
 
     .blob1{
@@ -101,16 +107,21 @@
     }
 
     @keyframes float{
+
       from{
         transform:translateY(0px);
       }
+
       to{
-        transform:translateY(30px);
+        transform:translateY(40px);
       }
+
     }
 
     .gradient-text{
-      background:linear-gradient(to right,#5e9bd9,#7c3aed);
+      background:
+      linear-gradient(to right,#5e9bd9,#7c3aed);
+
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
@@ -121,13 +132,14 @@
     }
 
     .project-card:hover{
-      transform:translateY(-10px);
+      transform:translateY(-10px) scale(1.01);
     }
 
     .tag{
-      padding:.4rem .9rem;
+      padding:.45rem 1rem;
       border-radius:999px;
       font-size:.8rem;
+      font-weight:600;
     }
 
     body.light .tag{
@@ -136,21 +148,6 @@
 
     body.dark .tag{
       background:rgba(255,255,255,.08);
-    }
-
-    .toggle-btn{
-      width:48px;
-      height:48px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition:.3s;
-    }
-
-    .toggle-btn:hover{
-      transform:scale(1.08);
     }
 
     .carousel-wrapper{
@@ -171,6 +168,7 @@
     }
 
     @keyframes scrollCarousel{
+
       from{
         transform:translateX(0);
       }
@@ -178,6 +176,7 @@
       to{
         transform:translateX(-50%);
       }
+
     }
 
     .media-item{
@@ -187,16 +186,31 @@
     .media-item img,
     .media-item video{
       width:100%;
-      height:230px;
+      height:220px;
       object-fit:cover;
-      border-radius:24px;
+      border-radius:28px;
+    }
+
+    .toggle-btn{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .toggle-btn:hover{
+      transform:scale(1.07);
     }
 
     .modal{
       position:fixed;
       inset:0;
       background:rgba(0,0,0,.5);
-      backdrop-filter:blur(10px);
+      backdrop-filter:blur(12px);
       z-index:999;
       display:none;
       align-items:center;
@@ -210,6 +224,7 @@
       max-height:90vh;
       overflow-y:auto;
       border-radius:40px;
+      position:relative;
     }
 
     .close-btn{
@@ -224,6 +239,7 @@
       justify-content:center;
       cursor:pointer;
       font-size:24px;
+      z-index:100;
     }
 
     .social-btn{
@@ -231,7 +247,7 @@
     }
 
     .social-btn:hover{
-      transform:translateY(-5px) scale(1.05);
+      transform:translateY(-5px) scale(1.04);
     }
 
     @media(max-width:768px){
@@ -248,17 +264,20 @@
     }
 
   </style>
+
 </head>
 
 <body class="light">
 
-  <!-- Background -->
+  <!-- BACKGROUND -->
   <div class="fixed inset-0 overflow-hidden -z-10">
+
     <div class="blob blob1"></div>
     <div class="blob blob2"></div>
+
   </div>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 w-full z-50 px-6 py-5">
 
     <div class="glass rounded-[28px] max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -285,7 +304,7 @@
 
   </nav>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="min-h-screen flex items-center px-6 pt-36">
 
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full">
@@ -314,7 +333,7 @@
 
         <p class="text-xl opacity-80 leading-relaxed mb-10">
 
-          Interactive Systems & Visualization Developer specializing in Unity, immersive UI systems, visualization pipelines, front-end experiences, and technical interactive solutions.
+          Interactive Systems, XR/VR, Visualization, Unity Development, Front-End Experiences, and Technical Interactive Solutions.
 
         </p>
 
@@ -354,7 +373,7 @@
 
   </section>
 
-  <!-- Projects -->
+  <!-- PROJECTS -->
   <section id="projects" class="py-32 px-6">
 
     <div class="max-w-7xl mx-auto">
@@ -379,7 +398,7 @@
 
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section id="contact" class="py-32 px-6">
 
     <div class="max-w-5xl mx-auto">
@@ -448,16 +467,16 @@
 
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="py-10 text-center opacity-60">
     © 2026 Ahmed AL Maghalawy
   </footer>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div id="projectModal"
   class="modal">
 
-    <div class="glass modal-content p-10 relative">
+    <div class="glass modal-content p-10">
 
       <div id="closeModal"
       class="close-btn glass">
@@ -476,225 +495,503 @@
 
       {
         company:"Caribou Coffee",
-        logo:"projects/CaribouCoffee/caribou_logo.png",
-        title:"Interactive Training Media",
+        logo:"projects/CaribouCoffee/logo.png",
+        title:"XR + VR Training System",
         country:"UAE",
         year:"2026",
-        website:"https://ahmed-elmaghalawy.github.io/CaribouTraining/",
-        description:"Interactive training and workflow systems for operational learning and presentation.",
-        technologies:["UI","Training","Media","Interactive"],
+
+        website:
+        "https://ahmed-elmaghalawy.github.io/CaribouTraining/",
+
+        description:
+        "Interactive XR and VR training ecosystem for food preparation, operational learning, and immersive workflow demonstrations.",
+
+        tags:[
+          {
+            name:"XR",
+            icon:"ri-focus-3-line",
+            color:"bg-cyan-500"
+          },
+
+          {
+            name:"VR",
+            icon:"ri-vr-line",
+            color:"bg-purple-500"
+          },
+
+          {
+            name:"WEB",
+            icon:"ri-global-line",
+            color:"bg-blue-500"
+          },
+
+          {
+            name:"Programming",
+            icon:"ri-code-box-line",
+            color:"bg-indigo-500"
+          }
+        ],
+
+        technologies:[
+          "Unity",
+          "XR",
+          "VR",
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+
         media:[
-          "projects/CaribouCoffee/caribou_logo.png",
+
+          "projects/CaribouCoffee/screen1.jpeg",
+          "projects/CaribouCoffee/screen2.jpeg",
+          "projects/CaribouCoffee/screen3.jpeg",
+          "projects/CaribouCoffee/screen4.jpeg",
+          "projects/CaribouCoffee/screen5.jpeg",
+          "projects/CaribouCoffee/screen6.jpeg",
+          "projects/CaribouCoffee/screen7.jpeg",
+          "projects/CaribouCoffee/screen8.jpeg",
+
           "projects/CaribouCoffee/Caribou_training_food_and_drinks.gif",
           "projects/CaribouCoffee/Caribou_training_food_and_drinks_V2.gif",
+
+          "projects/CaribouCoffee/caribou_training_materials_website_demo.mp4",
+
           "projects/CaribouCoffee/caribou_training_web01.mp4",
-          "projects/CaribouCoffee/caribou_training_web02.mp4"
+
+          "projects/CaribouCoffee/caribou_training_web02.mp4",
+
+          "projects/CaribouCoffee/vr_demo_drink_example_lotus_latte.mp4",
+
+          "projects/CaribouCoffee/xr_demo_drink_example_lotus_latte.mp4",
+
+          "projects/CaribouCoffee/xr_demo_food_items.mp4"
+        ]
+      },
+
+      {
+        company:"Damietta University",
+
+        logo:"projects/portfolio_pic.png",
+
+        title:"VR Exploration & 3D Visualization",
+
+        country:"Egypt",
+
+        year:"2025",
+
+        website:"#",
+
+        description:
+        "3D podium visualization and immersive VR exploration demonstrations.",
+
+        tags:[
+
+          {
+            name:"VR",
+            icon:"ri-vr-line",
+            color:"bg-purple-500"
+          },
+
+          {
+            name:"3D",
+            icon:"ri-box-3-line",
+            color:"bg-orange-500"
+          }
+
+        ],
+
+        technologies:[
+          "Unity",
+          "VR",
+          "3D",
+          "Visualization"
+        ],
+
+        media:[
+
+          "projects/DamiettaUniversity/Damitta_University_podium_3d.mp4",
+
+          "projects/DamiettaUniversity/vr_exploration_demo.mp4"
+
         ]
       },
 
       {
         company:"Damieture Furniture",
-        logo:"projects/DamietureFurniture/logo.png",
-        title:"Architectural Visualization",
-        country:"Egypt",
-        year:"2025",
-        website:"https://ahmed-elmaghalawy.github.io/DamietureFurniture/",
-        description:"Furniture and architectural visualization pipeline using cinematic presentation and 3D workflows.",
-        technologies:["Blender","Rendering","Visualization"],
-        media:[
-          "projects/DamietureFurniture/screeshot1.jpg",
-          "projects/DamietureFurniture/screeshot2.jpg",
-          "projects/DamietureFurniture/bedroom_dresser_timelaps.mp4",
-          "projects/DamietureFurniture/damieture_Building_3d.mp4"
-        ]
-      },
 
-      {
-        company:"Fekra Factory",
-        logo:"projects/FekraFactory/fekrafactory_logo.png",
-        title:"Interactive Configurator",
-        country:"UAE",
-        year:"2026",
-        website:"https://ahmed-elmaghalawy.github.io/FekraFactoryBuild/",
-        description:"Real-time interactive product customization and visualization system.",
-        technologies:["Unity","C#","Interactive"],
+        logo:
+        "projects/DamietureFurniture/logo.png",
+
+        title:"Furniture Visualization Pipeline",
+
+        country:"Egypt",
+
+        year:"2025",
+
+        website:
+        "https://ahmed-elmaghalawy.github.io/DamietureFurniture/",
+
+        description:
+        "Furniture and architectural visualization workflows using cinematic rendering and animation.",
+
+        tags:[
+
+          {
+            name:"3D",
+            icon:"ri-box-3-line",
+            color:"bg-orange-500"
+          },
+
+          {
+            name:"Rendering",
+            icon:"ri-movie-2-line",
+            color:"bg-red-500"
+          }
+
+        ],
+
+        technologies:[
+          "Blender",
+          "Rendering",
+          "Animation"
+        ],
+
         media:[
-          "projects/FekraFactory/fekrafactory_logo.png",
-          "projects/FekraFactory/screenshot1.jpg",
-          "projects/FekraFactory/screenshot2.jpg"
+
+          "projects/DamietureFurniture/screeshot1.jpg",
+
+          "projects/DamietureFurniture/screeshot2.jpg",
+
+          "projects/DamietureFurniture/screeshot3.jpg",
+
+          "projects/DamietureFurniture/screeshot4.jpg",
+
+          "projects/DamietureFurniture/bedroom_dresser_timelaps_3d.mp4",
+
+          "projects/DamietureFurniture/damieture_Building_3d.mp4"
+
         ]
       },
 
       {
         company:"Deqah Furniture",
-        logo:"projects/DequaFurniture/logo.jpg",
+
+        logo:
+        "projects/DequaFurniture/logo.jpg",
+
         title:"Furniture Branding",
+
         country:"Egypt",
+
         year:"2025",
-        website:"https://deqahfurniture.com/",
-        description:"Furniture presentation and branding visualization systems.",
-        technologies:["Branding","Visualization"],
+
+        website:
+        "https://deqahfurniture.com/",
+
+        description:
+        "Furniture presentation and branding visualization systems.",
+
+        tags:[
+
+          {
+            name:"Branding",
+            icon:"ri-brush-line",
+            color:"bg-pink-500"
+          }
+
+        ],
+
+        technologies:[
+          "Branding",
+          "Presentation"
+        ],
+
         media:[
-          "projects/DequaFurniture/logo.jpg",
+
           "projects/DequaFurniture/screenshot1.jpg",
+
           "projects/DequaFurniture/screenshot2.jpg"
+
         ]
       },
 
       {
-        company:"Ruqi Furniture",
-        logo:"projects/RukiFurniture/logo.jpg",
-        title:"Interior Presentation",
-        country:"Egypt",
-        year:"2025",
-        website:"https://ruqifurniture.com/",
-        description:"Interior and furniture visual presentation system.",
-        technologies:["Interior","3D","Rendering"],
+        company:"Fekra Factory",
+
+        logo:
+        "projects/FekraFactory/fekrafactory_logo.png",
+
+        title:"Interactive Product Configurator",
+
+        country:"UAE",
+
+        year:"2026",
+
+        website:
+        "https://ahmed-elmaghalawy.github.io/FekraFactoryBuild/",
+
+        description:
+        "Interactive product configuration and visualization system using real-time UI workflows.",
+
+        tags:[
+
+          {
+            name:"Programming",
+            icon:"ri-code-box-line",
+            color:"bg-indigo-500"
+          },
+
+          {
+            name:"Unity",
+            icon:"ri-gamepad-line",
+            color:"bg-gray-700"
+          }
+
+        ],
+
+        technologies:[
+          "Unity",
+          "C#",
+          "Interactive Systems"
+        ],
+
         media:[
-          "projects/RukiFurniture/logo.jpg",
-          "projects/RukiFurniture/screenshot1.jpg",
-          "projects/RukiFurniture/screenshot2.jpg",
-          "projects/RukiFurniture/screenshot3.jpg"
+
+          "projects/FekraFactory/screenshot1.jpg",
+
+          "projects/FekraFactory/screenshot2.jpg"
+
         ]
       },
 
       {
         company:"Majala Studio",
-        logo:"projects/Majala/logo.png",
-        title:"Creative Studio Platform",
+
+        logo:
+        "projects/Majala/logo.png",
+
+        title:"Creative Interactive Media",
+
         country:"UAE",
+
         year:"2026",
-        website:"https://www.majalastudio.com/",
-        description:"Creative branding and digital presentation platform.",
-        technologies:["Branding","Creative","UI"],
+
+        website:
+        "https://www.majalastudio.com/",
+
+        description:
+        "Interactive creative media demonstrations and animation showcases.",
+
+        tags:[
+
+          {
+            name:"GameDev",
+            icon:"ri-gamepad-line",
+            color:"bg-purple-500"
+          },
+
+          {
+            name:"3D",
+            icon:"ri-box-3-line",
+            color:"bg-orange-500"
+          }
+
+        ],
+
+        technologies:[
+          "Unity",
+          "3D",
+          "Animation"
+        ],
+
         media:[
-          "projects/Majala/logo.png"
+
+          "projects/Majala/flappyBird_remake.mp4",
+
+          "projects/Majala/yougurt_can.mp4"
+
+        ]
+      },
+
+      {
+        company:"Ruki Furniture",
+
+        logo:
+        "projects/RukiFurniture/logo.jpg",
+
+        title:"Interior Visualization",
+
+        country:"Egypt",
+
+        year:"2025",
+
+        website:
+        "https://ruqifurniture.com/",
+
+        description:
+        "Furniture and interior visualization system for premium presentation.",
+
+        tags:[
+
+          {
+            name:"Interior",
+            icon:"ri-home-4-line",
+            color:"bg-yellow-500"
+          },
+
+          {
+            name:"3D",
+            icon:"ri-box-3-line",
+            color:"bg-orange-500"
+          }
+
+        ],
+
+        technologies:[
+          "Visualization",
+          "Rendering"
+        ],
+
+        media:[
+
+          "projects/RukiFurniture/screenshot1.jpg",
+
+          "projects/RukiFurniture/screenshot2.jpg",
+
+          "projects/RukiFurniture/screenshot3.jpg"
+
         ]
       }
 
     ];
 
+    // RENDER PROJECTS
+
     const container =
     document.getElementById("projectsContainer");
 
-    function renderProjects(){
+    projects.forEach(project=>{
 
-      projects.forEach((project,index)=>{
+      const card =
+      document.createElement("div");
 
-        const card =
-        document.createElement("div");
+      card.className =
+      "glass rounded-[40px] overflow-hidden project-card";
 
-        card.className =
-        "glass rounded-[40px] overflow-hidden project-card";
+      card.innerHTML = `
 
-        card.innerHTML = `
+        <div class="p-8">
 
-          <div class="p-8">
+          <!-- HEADER -->
+          <div class="flex items-center gap-5 mb-6">
 
-            <div class="flex items-center gap-5 mb-6">
+            <img
+            src="${project.logo}"
+            class="w-20 h-20 rounded-3xl object-cover">
 
-              <img
-              src="${project.logo}"
-              class="w-20 h-20 rounded-2xl object-cover">
+            <div>
 
-              <div>
+              <p class="text-[#5e9bd9] text-sm mb-1">
+                ${project.country} • ${project.year}
+              </p>
 
-                <p class="text-sm text-[#5e9bd9]">
-                  ${project.country} • ${project.year}
-                </p>
-
-                <h3 class="text-4xl font-black">
-                  ${project.company}
-                </h3>
-
-              </div>
-
-            </div>
-
-            <h4 class="text-2xl font-bold mb-5">
-              ${project.title}
-            </h4>
-
-            <p class="opacity-80 leading-relaxed mb-8">
-              ${project.description}
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-
-              ${project.technologies.map(tech=>`
-
-                <div class="tag">
-                  ${tech}
-                </div>
-
-              `).join("")}
-
-            </div>
-
-            <div class="carousel-wrapper">
-
-              <div class="carousel-track">
-
-                ${[...project.media,...project.media].map(media=>{
-
-                  const isVideo =
-                  media.endsWith(".mp4");
-
-                  if(isVideo){
-
-                    return `
-
-                    <div class="media-item">
-
-                      <video
-                      autoplay
-                      muted
-                      loop
-                      playsinline>
-
-                        <source
-                        src="${media}"
-                        type="video/mp4">
-
-                      </video>
-
-                    </div>
-
-                    `;
-
-                  }
-
-                  return `
-
-                  <div class="media-item">
-
-                    <img src="${media}">
-
-                  </div>
-
-                  `;
-
-                }).join("")}
-
-              </div>
+              <h3 class="text-4xl font-black">
+                ${project.company}
+              </h3>
 
             </div>
 
           </div>
 
-        `;
+          <!-- TITLE -->
+          <h4 class="text-2xl font-bold mb-5">
+            ${project.title}
+          </h4>
 
-        card.onclick = ()=>openModal(project);
+          <!-- TAGS -->
+          <div class="flex flex-wrap gap-3 mb-6">
 
-        container.appendChild(card);
+            ${project.tags.map(tag=>`
 
-      });
+              <div class="${tag.color} text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm">
 
-    }
+                <i class="${tag.icon}"></i>
 
-    renderProjects();
+                ${tag.name}
 
-    // Modal
+              </div>
+
+            `).join("")}
+
+          </div>
+
+          <!-- DESCRIPTION -->
+          <p class="opacity-80 leading-relaxed mb-8">
+            ${project.description}
+          </p>
+
+          <!-- MEDIA -->
+          <div class="carousel-wrapper">
+
+            <div class="carousel-track">
+
+              ${[...project.media,...project.media].map(media=>{
+
+                const isVideo =
+                media.endsWith(".mp4");
+
+                if(isVideo){
+
+                  return `
+
+                  <div class="media-item">
+
+                    <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline>
+
+                      <source
+                      src="${media}"
+                      type="video/mp4">
+
+                    </video>
+
+                  </div>
+
+                  `;
+
+                }
+
+                return `
+
+                <div class="media-item">
+
+                  <img src="${media}">
+
+                </div>
+
+                `;
+
+              }).join("")}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+      card.onclick = ()=>openModal(project);
+
+      container.appendChild(card);
+
+    });
+
+    // MODAL
 
     const modal =
     document.getElementById("projectModal");
@@ -708,96 +1005,104 @@
 
       modalBody.innerHTML = `
 
-        <div class="flex items-center gap-5 mb-8">
+        <div>
 
-          <img
-          src="${project.logo}"
-          class="w-28 h-28 rounded-3xl object-cover">
+          <p class="text-[#5e9bd9] text-lg mb-2">
+            ${project.country} • ${project.year}
+          </p>
 
-          <div>
+          <h2 class="text-5xl font-black mb-4">
+            ${project.company}
+          </h2>
 
-            <p class="text-[#5e9bd9] text-lg">
-              ${project.country} • ${project.year}
-            </p>
+          <h3 class="text-2xl opacity-80 mb-6">
+            ${project.title}
+          </h3>
 
-            <h2 class="text-5xl font-black mb-2">
-              ${project.company}
-            </h2>
+          <div class="flex flex-wrap gap-3 mb-8">
 
-            <h3 class="text-2xl opacity-80">
-              ${project.title}
-            </h3>
+            ${project.tags.map(tag=>`
+
+              <div class="${tag.color} text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm">
+
+                <i class="${tag.icon}"></i>
+
+                ${tag.name}
+
+              </div>
+
+            `).join("")}
 
           </div>
 
-        </div>
+          <p class="text-xl leading-relaxed opacity-80 mb-10">
+            ${project.description}
+          </p>
 
-        <p class="text-xl leading-relaxed opacity-80 mb-10">
-          ${project.description}
-        </p>
+          <div class="flex flex-wrap gap-3 mb-10">
 
-        <div class="flex flex-wrap gap-3 mb-10">
+            ${project.technologies.map(tech=>`
 
-          ${project.technologies.map(tech=>`
+              <div class="tag">
+                ${tech}
+              </div>
 
-            <div class="tag">
-              ${tech}
-            </div>
+            `).join("")}
 
-          `).join("")}
+          </div>
 
-        </div>
+          <div class="grid md:grid-cols-2 gap-6 mb-10">
 
-        <div class="grid md:grid-cols-2 gap-6 mb-10">
+            ${project.media.map(media=>{
 
-          ${project.media.map(media=>{
+              const isVideo =
+              media.endsWith(".mp4");
 
-            const isVideo =
-            media.endsWith(".mp4");
+              if(isVideo){
 
-            if(isVideo){
+                return `
+
+                <video
+                controls
+                autoplay
+                muted
+                loop
+                class="rounded-[30px] w-full">
+
+                  <source
+                  src="${media}"
+                  type="video/mp4">
+
+                </video>
+
+                `;
+
+              }
 
               return `
 
-              <video
-              controls
-              autoplay
-              muted
-              loop
+              <img
+              src="${media}"
               class="rounded-[30px] w-full">
-
-                <source
-                src="${media}"
-                type="video/mp4">
-
-              </video>
 
               `;
 
-            }
+            }).join("")}
 
-            return `
+          </div>
 
-            <img
-            src="${media}"
-            class="rounded-[30px] w-full">
+          <a
+          href="${project.website}"
+          target="_blank"
+          class="bg-[#5e9bd9] text-white px-8 py-4 rounded-2xl inline-flex items-center gap-3 hover:scale-105 transition">
 
-            `;
+            <i class="ri-external-link-line"></i>
 
-          }).join("")}
+            Open Project
+
+          </a>
 
         </div>
-
-        <a
-        href="${project.website}"
-        target="_blank"
-        class="bg-[#5e9bd9] text-white px-8 py-4 rounded-2xl inline-flex items-center gap-3 hover:scale-105 transition">
-
-          <i class="ri-external-link-line"></i>
-
-          Open Project
-
-        </a>
 
       `;
 
@@ -810,7 +1115,7 @@
 
     };
 
-    // Theme
+    // THEME
 
     const body =
     document.body;
@@ -844,7 +1149,7 @@
 
     };
 
-    // Language
+    // LANGUAGE TOGGLE
 
     const langToggle =
     document.getElementById("langToggle");
@@ -858,6 +1163,7 @@
       if(arabic){
 
         document.documentElement.dir = "rtl";
+
         langToggle.innerHTML = "🇦🇪";
 
       }
@@ -865,22 +1171,23 @@
       else{
 
         document.documentElement.dir = "ltr";
+
         langToggle.innerHTML = "🇬🇧";
 
       }
 
     };
 
-    // Animations
-
-    gsap.registerPlugin(ScrollTrigger);
+    // GSAP
 
     gsap.from("section",{
+
       opacity:0,
       y:50,
       duration:1,
       stagger:.2,
       ease:"power3.out"
+
     });
 
   </script>
