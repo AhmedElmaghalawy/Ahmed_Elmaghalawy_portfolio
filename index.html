@@ -21,6 +21,7 @@
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
   rel="stylesheet">
@@ -250,6 +251,18 @@
       transform:translateY(-5px) scale(1.04);
     }
 
+    .hero-image{
+      width:100%;
+      height:520px;
+      object-fit:cover;
+      border-radius:30px;
+    }
+
+    .logo-image{
+      background:white;
+      padding:6px;
+    }
+
     @media(max-width:768px){
 
       .media-item{
@@ -259,6 +272,10 @@
       .media-item img,
       .media-item video{
         height:180px;
+      }
+
+      .hero-image{
+        height:380px;
       }
 
     }
@@ -333,7 +350,7 @@
 
         <p class="text-xl opacity-80 leading-relaxed mb-10">
 
-          Interactive Systems, XR/VR, Visualization, Unity Development, Front-End Experiences, and Technical Interactive Solutions.
+          Interactive Systems, XR/VR, Unity Development, Visualization, Front-End Experiences, Technical Solutions, and Creative Interactive Media.
 
         </p>
 
@@ -363,7 +380,7 @@
 
           <img
           src="projects/portfolio_pic.png"
-          class="rounded-[30px] w-full h-[520px] object-cover">
+          class="hero-image">
 
         </div>
 
@@ -495,18 +512,23 @@
 
       {
         company:"Caribou Coffee",
+
         logo:"projects/CaribouCoffee/logo.png",
+
         title:"XR + VR Training System",
+
         country:"UAE",
+
         year:"2026",
 
         website:
         "https://ahmed-elmaghalawy.github.io/CaribouTraining/",
 
         description:
-        "Interactive XR and VR training ecosystem for food preparation, operational learning, and immersive workflow demonstrations.",
+        "Interactive XR and VR training ecosystem for food preparation, operational learning, immersive workflow demonstrations, and digital training experiences.",
 
         tags:[
+
           {
             name:"XR",
             icon:"ri-focus-3-line",
@@ -530,6 +552,7 @@
             icon:"ri-code-box-line",
             color:"bg-indigo-500"
           }
+
         ],
 
         technologies:[
@@ -566,13 +589,14 @@
           "projects/CaribouCoffee/xr_demo_drink_example_lotus_latte.mp4",
 
           "projects/CaribouCoffee/xr_demo_food_items.mp4"
+
         ]
       },
 
       {
         company:"Damietta University",
 
-        logo:"projects/portfolio_pic.png",
+        logo:"projects/DamiettaUniversity/logo.png",
 
         title:"VR Exploration & 3D Visualization",
 
@@ -583,7 +607,7 @@
         website:"#",
 
         description:
-        "3D podium visualization and immersive VR exploration demonstrations.",
+        "3D podium visualization, interactive university exploration, virtual campus walkthroughs, and immersive educational VR experiences.",
 
         tags:[
 
@@ -597,6 +621,12 @@
             name:"3D",
             icon:"ri-box-3-line",
             color:"bg-orange-500"
+          },
+
+          {
+            name:"Visualization",
+            icon:"ri-eye-line",
+            color:"bg-sky-500"
           }
 
         ],
@@ -609,6 +639,14 @@
         ],
 
         media:[
+
+          "projects/DamiettaUniversity/3d_1.jpeg",
+          "projects/DamiettaUniversity/3d_2.jpeg",
+          "projects/DamiettaUniversity/3d_3.jpeg",
+          "projects/DamiettaUniversity/3d_4.jpeg",
+          "projects/DamiettaUniversity/3d_5.jpeg",
+
+          "projects/DamiettaUniversity/Uni_rtopview_map.png",
 
           "projects/DamiettaUniversity/Damitta_University_podium_3d.mp4",
 
@@ -633,7 +671,7 @@
         "https://ahmed-elmaghalawy.github.io/DamietureFurniture/",
 
         description:
-        "Furniture and architectural visualization workflows using cinematic rendering and animation.",
+        "Furniture and architectural visualization workflows using cinematic rendering, animation, and interactive presentation systems.",
 
         tags:[
 
@@ -647,6 +685,12 @@
             name:"Rendering",
             icon:"ri-movie-2-line",
             color:"bg-red-500"
+          },
+
+          {
+            name:"Architecture",
+            icon:"ri-building-line",
+            color:"bg-blue-500"
           }
 
         ],
@@ -654,7 +698,8 @@
         technologies:[
           "Blender",
           "Rendering",
-          "Animation"
+          "Animation",
+          "Visualization"
         ],
 
         media:[
@@ -690,7 +735,7 @@
         "https://deqahfurniture.com/",
 
         description:
-        "Furniture presentation and branding visualization systems.",
+        "Furniture presentation, branding visualization systems, and premium product showcase experiences.",
 
         tags:[
 
@@ -698,13 +743,20 @@
             name:"Branding",
             icon:"ri-brush-line",
             color:"bg-pink-500"
+          },
+
+          {
+            name:"Furniture",
+            icon:"ri-sofa-line",
+            color:"bg-yellow-500"
           }
 
         ],
 
         technologies:[
           "Branding",
-          "Presentation"
+          "Presentation",
+          "Visualization"
         ],
 
         media:[
@@ -732,7 +784,7 @@
         "https://ahmed-elmaghalawy.github.io/FekraFactoryBuild/",
 
         description:
-        "Interactive product configuration and visualization system using real-time UI workflows.",
+        "Interactive product configuration and visualization system using real-time UI workflows, dynamic customization, and interactive experiences.",
 
         tags:[
 
@@ -746,6 +798,12 @@
             name:"Unity",
             icon:"ri-gamepad-line",
             color:"bg-gray-700"
+          },
+
+          {
+            name:"UI/UX",
+            icon:"ri-layout-4-line",
+            color:"bg-cyan-500"
           }
 
         ],
@@ -753,7 +811,8 @@
         technologies:[
           "Unity",
           "C#",
-          "Interactive Systems"
+          "Interactive Systems",
+          "UI/UX"
         ],
 
         media:[
@@ -781,7 +840,7 @@
         "https://www.majalastudio.com/",
 
         description:
-        "Interactive creative media demonstrations and animation showcases.",
+        "Interactive creative media demonstrations, animation showcases, stylized rendering, and game development experiments.",
 
         tags:[
 
@@ -795,6 +854,12 @@
             name:"3D",
             icon:"ri-box-3-line",
             color:"bg-orange-500"
+          },
+
+          {
+            name:"Animation",
+            icon:"ri-movie-line",
+            color:"bg-pink-500"
           }
 
         ],
@@ -802,7 +867,8 @@
         technologies:[
           "Unity",
           "3D",
-          "Animation"
+          "Animation",
+          "Interactive Media"
         ],
 
         media:[
@@ -830,7 +896,7 @@
         "https://ruqifurniture.com/",
 
         description:
-        "Furniture and interior visualization system for premium presentation.",
+        "Furniture and interior visualization systems focused on premium presentation and realistic rendering workflows.",
 
         tags:[
 
@@ -850,7 +916,8 @@
 
         technologies:[
           "Visualization",
-          "Rendering"
+          "Rendering",
+          "Interior Design"
         ],
 
         media:[
@@ -860,6 +927,83 @@
           "projects/RukiFurniture/screenshot2.jpg",
 
           "projects/RukiFurniture/screenshot3.jpg"
+
+        ]
+      },
+
+      {
+        company:"Wasl Properties",
+
+        logo:
+        "projects/portfolio_pic.png",
+
+        title:"Real Estate UI & Property Experience",
+
+        country:"UAE",
+
+        year:"2026",
+
+        website:"#",
+
+        description:
+        "Modern property platform interface concepts featuring dark mode and light mode UI systems for real estate experiences.",
+
+        tags:[
+
+          {
+            name:"UI/UX",
+            icon:"ri-layout-4-line",
+            color:"bg-cyan-500"
+          },
+
+          {
+            name:"Real Estate",
+            icon:"ri-building-4-line",
+            color:"bg-emerald-500"
+          },
+
+          {
+            name:"Front-End",
+            icon:"ri-code-s-slash-line",
+            color:"bg-indigo-500"
+          }
+
+        ],
+
+        technologies:[
+          "UI Design",
+          "Front-End",
+          "Interactive Systems",
+          "Visualization"
+        ],
+
+        media:[
+
+          "projects/WaslProperties/screen_darkmode_1.jpeg",
+          "projects/WaslProperties/screen_darkmode_11.jpeg",
+          "projects/WaslProperties/screen_darkmode_12.jpeg",
+          "projects/WaslProperties/screen_darkmode_13.jpeg",
+          "projects/WaslProperties/screen_darkmode_14.jpeg",
+          "projects/WaslProperties/screen_darkmode_15.jpeg",
+          "projects/WaslProperties/screen_darkmode_16.jpeg",
+          "projects/WaslProperties/screen_darkmode_17.jpeg",
+          "projects/WaslProperties/screen_darkmode_2.jpeg",
+          "projects/WaslProperties/screen_darkmode_3.jpeg",
+          "projects/WaslProperties/screen_darkmode_4.jpeg",
+          "projects/WaslProperties/screen_darkmode_5.jpeg",
+          "projects/WaslProperties/screen_darkmode_6.jpeg",
+          "projects/WaslProperties/screen_darkmode_7.jpeg",
+          "projects/WaslProperties/screen_darkmode_8.jpeg",
+          "projects/WaslProperties/screen_darkmode_9.jpeg",
+
+          "projects/WaslProperties/screen_lightmode_1.jpeg",
+          "projects/WaslProperties/screen_lightmode_12.jpeg",
+          "projects/WaslProperties/screen_lightmode_13-4.jpeg",
+          "projects/WaslProperties/screen_lightmode_3.jpeg",
+          "projects/WaslProperties/screen_lightmode_4.jpeg",
+          "projects/WaslProperties/screen_lightmode_5.jpeg",
+          "projects/WaslProperties/screen_lightmode_6.jpeg",
+          "projects/WaslProperties/screen_lightmode_8.jpeg"
 
         ]
       }
@@ -888,7 +1032,7 @@
 
             <img
             src="${project.logo}"
-            class="w-20 h-20 rounded-3xl object-cover">
+            class="w-20 h-20 rounded-3xl object-cover logo-image">
 
             <div>
 
@@ -1091,16 +1235,24 @@
 
           </div>
 
-          <a
-          href="${project.website}"
-          target="_blank"
-          class="bg-[#5e9bd9] text-white px-8 py-4 rounded-2xl inline-flex items-center gap-3 hover:scale-105 transition">
+          ${
+            project.website !== "#"
+            ?
+            `
+            <a
+            href="${project.website}"
+            target="_blank"
+            class="bg-[#5e9bd9] text-white px-8 py-4 rounded-2xl inline-flex items-center gap-3 hover:scale-105 transition">
 
-            <i class="ri-external-link-line"></i>
+              <i class="ri-external-link-line"></i>
 
-            Open Project
+              Open Project
 
-          </a>
+            </a>
+            `
+            :
+            ""
+          }
 
         </div>
 
@@ -1112,6 +1264,16 @@
     .onclick = ()=>{
 
       modal.style.display = "none";
+
+    };
+
+    window.onclick = (e)=>{
+
+      if(e.target === modal){
+
+        modal.style.display = "none";
+
+      }
 
     };
 
@@ -1164,6 +1326,8 @@
 
         document.documentElement.dir = "rtl";
 
+        document.documentElement.lang = "ar";
+
         langToggle.innerHTML = "🇦🇪";
 
       }
@@ -1171,6 +1335,8 @@
       else{
 
         document.documentElement.dir = "ltr";
+
+        document.documentElement.lang = "en";
 
         langToggle.innerHTML = "🇬🇧";
 
