@@ -1,92 +1,889 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Mohamed Elmaghlawy | IT Manager Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/YOUR_FA_KIT.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ahmed AL Maghalawy | Interactive Portfolio</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+      transition:.4s;
+    }
+
+    body.light{
+      background:
+      radial-gradient(circle at top,
+      #ffffff 0%,
+      #edf4ff 45%,
+      #dbeafe 100%);
+      color:#0f172a;
+    }
+
+    body.dark{
+      background:
+      radial-gradient(circle at top,
+      #111827 0%,
+      #050816 45%,
+      #02040d 100%);
+      color:white;
+    }
+
+    .glass{
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      transition:.3s;
+    }
+
+    body.light .glass{
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:
+      0 8px 30px rgba(0,0,0,.08),
+      inset 0 1px 1px rgba(255,255,255,.7);
+    }
+
+    body.dark .glass{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:
+      0 8px 30px rgba(0,0,0,.4),
+      inset 0 1px 1px rgba(255,255,255,.08);
+    }
+
+    .blob{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(100px);
+      opacity:.2;
+      animation:float 12s infinite alternate ease-in-out;
+    }
+
+    .blob1{
+      width:400px;
+      height:400px;
+      background:#5e9bd9;
+      top:-100px;
+      left:-100px;
+    }
+
+    .blob2{
+      width:300px;
+      height:300px;
+      background:#7c3aed;
+      bottom:-100px;
+      right:-100px;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(0px);
+      }
+      to{
+        transform:translateY(30px);
+      }
+    }
+
+    .gradient-text{
+      background:linear-gradient(to right,#5e9bd9,#7c3aed);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .project-card{
+      transition:.4s;
+      cursor:pointer;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .tag{
+      padding:.4rem .9rem;
+      border-radius:999px;
+      font-size:.8rem;
+    }
+
+    body.light .tag{
+      background:rgba(255,255,255,.7);
+    }
+
+    body.dark .tag{
+      background:rgba(255,255,255,.08);
+    }
+
+    .toggle-btn{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .toggle-btn:hover{
+      transform:scale(1.08);
+    }
+
+    .carousel-wrapper{
+      overflow:hidden;
+      position:relative;
+      width:100%;
+    }
+
+    .carousel-track{
+      display:flex;
+      gap:20px;
+      width:max-content;
+      animation:scrollCarousel 35s linear infinite;
+    }
+
+    .carousel-track:hover{
+      animation-play-state:paused;
+    }
+
+    @keyframes scrollCarousel{
+      from{
+        transform:translateX(0);
+      }
+
+      to{
+        transform:translateX(-50%);
+      }
+    }
+
+    .media-item{
+      min-width:320px;
+    }
+
+    .media-item img,
+    .media-item video{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      border-radius:24px;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.5);
+      backdrop-filter:blur(10px);
+      z-index:999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .modal-content{
+      width:100%;
+      max-width:1200px;
+      max-height:90vh;
+      overflow-y:auto;
+      border-radius:40px;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:20px;
+      right:20px;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:24px;
+    }
+
+    .social-btn{
+      transition:.3s;
+    }
+
+    .social-btn:hover{
+      transform:translateY(-5px) scale(1.05);
+    }
+
+    @media(max-width:768px){
+
+      .media-item{
+        min-width:260px;
+      }
+
+      .media-item img,
+      .media-item video{
+        height:180px;
+      }
+
+    }
+
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900" onload="AOS.init();">
-    <header class="bg-blue-900 text-white py-6 shadow-md fixed w-full z-10">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
-            <h1 class="text-3xl font-bold">Ahmed Mohamed Elmaghlawy</h1>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#about" class="hover:underline">About</a></li>
-                    <li><a href="#skills" class="hover:underline">Skills</a></li>
-                    <li><a href="#experience" class="hover:underline">Experience</a></li>
-                    <li><a href="#contact" class="hover:underline">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <section id="about" class="container mx-auto px-6 py-24 mt-6" data-aos="fade-up">
-        <div class="grid md:grid-cols-2 gap-6">
-            <div>
-                <h2 class="text-2xl font-semibold mb-4">Professional Summary</h2>
-                <p class="text-gray-700 leading-relaxed">
-                    IT Manager specializing in automation, scripting, and digital transformation. Skilled in optimizing IT infrastructure, 
-                    integrating modern technologies, and streamlining workflows. Passionate about leveraging technology to drive innovation and 
-                    operational improvements.
+<body class="light">
+
+  <!-- Background -->
+  <div class="fixed inset-0 overflow-hidden -z-10">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full z-50 px-6 py-5">
+
+    <div class="glass rounded-[28px] max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <h1 class="text-2xl font-black">
+        Ahmed <span class="text-[#5e9bd9]">AL Maghalawy</span>
+      </h1>
+
+      <div class="flex items-center gap-3">
+
+        <div id="langToggle"
+        class="toggle-btn glass text-xl">
+          🇬🇧
+        </div>
+
+        <div id="themeToggle"
+        class="toggle-btn glass text-xl">
+          ☀️
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center px-6 pt-36">
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full">
+
+      <div>
+
+        <div class="glass inline-flex items-center gap-3 px-5 py-3 rounded-full mb-6">
+
+          <div class="w-2 h-2 rounded-full bg-green-500"></div>
+
+          <span>
+            Available For Opportunities
+          </span>
+
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+
+          Ahmed <br>
+
+          <span class="gradient-text">
+            AL Maghalawy
+          </span>
+
+        </h1>
+
+        <p class="text-xl opacity-80 leading-relaxed mb-10">
+
+          Interactive Systems & Visualization Developer specializing in Unity, immersive UI systems, visualization pipelines, front-end experiences, and technical interactive solutions.
+
+        </p>
+
+        <div class="flex flex-wrap gap-5">
+
+          <a href="#projects"
+          class="bg-[#5e9bd9] text-white px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+
+            View Projects
+
+          </a>
+
+          <a href="#contact"
+          class="glass px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+
+            Contact Me
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="flex justify-center">
+
+        <div class="glass rounded-[40px] p-5 max-w-md w-full">
+
+          <img
+          src="projects/portfolio_pic.png"
+          class="rounded-[30px] w-full h-[520px] object-cover">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-32 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="mb-16">
+
+        <p class="uppercase tracking-[0.3em] text-[#5e9bd9] text-sm mb-4">
+          PROJECTS
+        </p>
+
+        <h2 class="text-4xl md:text-6xl font-black">
+          Featured Projects
+        </h2>
+
+      </div>
+
+      <div id="projectsContainer"
+      class="grid lg:grid-cols-2 gap-10">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-32 px-6">
+
+    <div class="max-w-5xl mx-auto">
+
+      <div class="glass rounded-[40px] p-12 text-center">
+
+        <p class="uppercase tracking-[0.3em] text-[#5e9bd9] text-sm mb-4">
+          CONTACT
+        </p>
+
+        <h2 class="text-4xl md:text-6xl font-black mb-8">
+          Let's Build Something Exceptional.
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-5">
+
+          <a href="mailto:ahmed.elmghlawy@gmail.com"
+          class="social-btn bg-red-500 text-white px-8 py-4 rounded-2xl flex items-center gap-3">
+
+            <i class="ri-mail-line"></i>
+            Email
+
+          </a>
+
+          <a href="https://github.com/Ahmed-Elmaghalawy"
+          target="_blank"
+          class="social-btn bg-black text-white px-8 py-4 rounded-2xl flex items-center gap-3">
+
+            <i class="ri-github-line"></i>
+            GitHub
+
+          </a>
+
+          <a href="https://www.youtube.com/@AhmedALMaghalawy/videos"
+          target="_blank"
+          class="social-btn bg-red-600 text-white px-8 py-4 rounded-2xl flex items-center gap-3">
+
+            <i class="ri-youtube-line"></i>
+            YouTube
+
+          </a>
+
+          <a href="https://www.facebook.com/AhmedElmeghalawy1"
+          target="_blank"
+          class="social-btn bg-blue-600 text-white px-8 py-4 rounded-2xl flex items-center gap-3">
+
+            <i class="ri-facebook-circle-line"></i>
+            Facebook
+
+          </a>
+
+          <a href="https://wa.me/971505260180"
+          target="_blank"
+          class="social-btn bg-green-500 text-white px-8 py-4 rounded-2xl flex items-center gap-3">
+
+            <i class="ri-whatsapp-line"></i>
+            WhatsApp
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center opacity-60">
+    © 2026 Ahmed AL Maghalawy
+  </footer>
+
+  <!-- Modal -->
+  <div id="projectModal"
+  class="modal">
+
+    <div class="glass modal-content p-10 relative">
+
+      <div id="closeModal"
+      class="close-btn glass">
+        ✕
+      </div>
+
+      <div id="modalBody"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const projects = [
+
+      {
+        company:"Caribou Coffee",
+        logo:"projects/CaribouCoffee/caribou_logo.png",
+        title:"Interactive Training Media",
+        country:"UAE",
+        year:"2026",
+        website:"https://ahmed-elmaghalawy.github.io/CaribouTraining/",
+        description:"Interactive training and workflow systems for operational learning and presentation.",
+        technologies:["UI","Training","Media","Interactive"],
+        media:[
+          "projects/CaribouCoffee/caribou_logo.png",
+          "projects/CaribouCoffee/Caribou_training_food_and_drinks.gif",
+          "projects/CaribouCoffee/Caribou_training_food_and_drinks_V2.gif",
+          "projects/CaribouCoffee/caribou_training_web01.mp4",
+          "projects/CaribouCoffee/caribou_training_web02.mp4"
+        ]
+      },
+
+      {
+        company:"Damieture Furniture",
+        logo:"projects/DamietureFurniture/logo.png",
+        title:"Architectural Visualization",
+        country:"Egypt",
+        year:"2025",
+        website:"https://ahmed-elmaghalawy.github.io/DamietureFurniture/",
+        description:"Furniture and architectural visualization pipeline using cinematic presentation and 3D workflows.",
+        technologies:["Blender","Rendering","Visualization"],
+        media:[
+          "projects/DamietureFurniture/screeshot1.jpg",
+          "projects/DamietureFurniture/screeshot2.jpg",
+          "projects/DamietureFurniture/bedroom_dresser_timelaps.mp4",
+          "projects/DamietureFurniture/damieture_Building_3d.mp4"
+        ]
+      },
+
+      {
+        company:"Fekra Factory",
+        logo:"projects/FekraFactory/fekrafactory_logo.png",
+        title:"Interactive Configurator",
+        country:"UAE",
+        year:"2026",
+        website:"https://ahmed-elmaghalawy.github.io/FekraFactoryBuild/",
+        description:"Real-time interactive product customization and visualization system.",
+        technologies:["Unity","C#","Interactive"],
+        media:[
+          "projects/FekraFactory/fekrafactory_logo.png",
+          "projects/FekraFactory/screenshot1.jpg",
+          "projects/FekraFactory/screenshot2.jpg"
+        ]
+      },
+
+      {
+        company:"Deqah Furniture",
+        logo:"projects/DequaFurniture/logo.jpg",
+        title:"Furniture Branding",
+        country:"Egypt",
+        year:"2025",
+        website:"https://deqahfurniture.com/",
+        description:"Furniture presentation and branding visualization systems.",
+        technologies:["Branding","Visualization"],
+        media:[
+          "projects/DequaFurniture/logo.jpg",
+          "projects/DequaFurniture/screenshot1.jpg",
+          "projects/DequaFurniture/screenshot2.jpg"
+        ]
+      },
+
+      {
+        company:"Ruqi Furniture",
+        logo:"projects/RukiFurniture/logo.jpg",
+        title:"Interior Presentation",
+        country:"Egypt",
+        year:"2025",
+        website:"https://ruqifurniture.com/",
+        description:"Interior and furniture visual presentation system.",
+        technologies:["Interior","3D","Rendering"],
+        media:[
+          "projects/RukiFurniture/logo.jpg",
+          "projects/RukiFurniture/screenshot1.jpg",
+          "projects/RukiFurniture/screenshot2.jpg",
+          "projects/RukiFurniture/screenshot3.jpg"
+        ]
+      },
+
+      {
+        company:"Majala Studio",
+        logo:"projects/Majala/logo.png",
+        title:"Creative Studio Platform",
+        country:"UAE",
+        year:"2026",
+        website:"https://www.majalastudio.com/",
+        description:"Creative branding and digital presentation platform.",
+        technologies:["Branding","Creative","UI"],
+        media:[
+          "projects/Majala/logo.png"
+        ]
+      }
+
+    ];
+
+    const container =
+    document.getElementById("projectsContainer");
+
+    function renderProjects(){
+
+      projects.forEach((project,index)=>{
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "glass rounded-[40px] overflow-hidden project-card";
+
+        card.innerHTML = `
+
+          <div class="p-8">
+
+            <div class="flex items-center gap-5 mb-6">
+
+              <img
+              src="${project.logo}"
+              class="w-20 h-20 rounded-2xl object-cover">
+
+              <div>
+
+                <p class="text-sm text-[#5e9bd9]">
+                  ${project.country} • ${project.year}
                 </p>
-            </div>
-            <div class="space-y-4">
-                <h2 class="text-2xl font-semibold">Contact Info</h2>
-                <p><i class="fas fa-map-marker-alt text-blue-700"></i> Cairo, Egypt</p>
-                <p><i class="fas fa-envelope text-blue-700"></i> <a href="mailto:ahmed.elmghlawy@gmail.com" class="underline">ahmed.elmghlawy@gmail.com</a></p>
-                <p><i class="fas fa-phone text-blue-700"></i> +20 1009113939</p>
-                <p><i class="fab fa-linkedin text-blue-700"></i> <a href="https://www.linkedin.com/in/ahmedelmaghalawy" target="_blank" class="underline">LinkedIn Profile</a></p>
-            </div>
-        </div>
-    </section>
 
-    <section id="skills" class="bg-white py-12" data-aos="fade-up">
-        <div class="container mx-auto px-6">
-            <h2 class="text-2xl font-semibold text-center mb-6">Core Technical Expertise</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="p-4 border rounded-lg shadow hover:shadow-xl transition">
-                    <h3 class="text-lg font-semibold"><i class="fas fa-code text-blue-700"></i> Automation & Scripting</h3>
-                    <p>Python, Bash, Windows Batch, CI/CD Pipelines</p>
+                <h3 class="text-4xl font-black">
+                  ${project.company}
+                </h3>
+
+              </div>
+
+            </div>
+
+            <h4 class="text-2xl font-bold mb-5">
+              ${project.title}
+            </h4>
+
+            <p class="opacity-80 leading-relaxed mb-8">
+              ${project.description}
+            </p>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+
+              ${project.technologies.map(tech=>`
+
+                <div class="tag">
+                  ${tech}
                 </div>
-                <div class="p-4 border rounded-lg shadow hover:shadow-xl transition">
-                    <h3 class="text-lg font-semibold"><i class="fas fa-network-wired text-blue-700"></i> IT Infrastructure & Security</h3>
-                    <p>Network Administration, Virtualization, Cybersecurity</p>
-                </div>
-                <div class="p-4 border rounded-lg shadow hover:shadow-xl transition">
-                    <h3 class="text-lg font-semibold"><i class="fas fa-database text-blue-700"></i> Software & Development Tools</h3>
-                    <p>Odoo ERP, PostgreSQL, Node.js, ReactJS, Git</p>
-                </div>
+
+              `).join("")}
+
             </div>
+
+            <div class="carousel-wrapper">
+
+              <div class="carousel-track">
+
+                ${[...project.media,...project.media].map(media=>{
+
+                  const isVideo =
+                  media.endsWith(".mp4");
+
+                  if(isVideo){
+
+                    return `
+
+                    <div class="media-item">
+
+                      <video
+                      autoplay
+                      muted
+                      loop
+                      playsinline>
+
+                        <source
+                        src="${media}"
+                        type="video/mp4">
+
+                      </video>
+
+                    </div>
+
+                    `;
+
+                  }
+
+                  return `
+
+                  <div class="media-item">
+
+                    <img src="${media}">
+
+                  </div>
+
+                  `;
+
+                }).join("")}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+        card.onclick = ()=>openModal(project);
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+    renderProjects();
+
+    // Modal
+
+    const modal =
+    document.getElementById("projectModal");
+
+    const modalBody =
+    document.getElementById("modalBody");
+
+    function openModal(project){
+
+      modal.style.display = "flex";
+
+      modalBody.innerHTML = `
+
+        <div class="flex items-center gap-5 mb-8">
+
+          <img
+          src="${project.logo}"
+          class="w-28 h-28 rounded-3xl object-cover">
+
+          <div>
+
+            <p class="text-[#5e9bd9] text-lg">
+              ${project.country} • ${project.year}
+            </p>
+
+            <h2 class="text-5xl font-black mb-2">
+              ${project.company}
+            </h2>
+
+            <h3 class="text-2xl opacity-80">
+              ${project.title}
+            </h3>
+
+          </div>
+
         </div>
-    </section>
 
-    <section id="experience" class="container mx-auto px-6 py-12" data-aos="fade-up">
-        <h2 class="text-2xl font-semibold text-center mb-6">Work Experience</h2>
-        <div class="space-y-6">
-            <div class="p-4 border-l-4 border-blue-700 bg-white shadow rounded-lg">
-                <h3 class="text-lg font-semibold">IT Manager - Saheb Al Saada Furniture (02/2024 – Present)</h3>
-                <p>Leading digital transformation, implementing ERP solutions, and enhancing security measures.</p>
+        <p class="text-xl leading-relaxed opacity-80 mb-10">
+          ${project.description}
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+
+          ${project.technologies.map(tech=>`
+
+            <div class="tag">
+              ${tech}
             </div>
-            <div class="p-4 border-l-4 border-blue-700 bg-white shadow rounded-lg">
-                <h3 class="text-lg font-semibold">IT Manager - Damieture (02/2021 – 01/2024)</h3>
-                <p>Automated business operations, digitalized workflows, and introduced cloud-based solutions.</p>
-            </div>
+
+          `).join("")}
+
         </div>
-    </section>
 
-    <section id="contact" class="bg-gray-900 text-white py-12 text-center" data-aos="fade-up">
-        <h2 class="text-2xl font-semibold mb-6">Get in Touch</h2>
-        <p>If you'd like to collaborate or have any inquiries, feel free to reach out!</p>
-        <a href="mailto:ahmed.elmghlawy@gmail.com" class="mt-4 inline-block bg-blue-700 px-6 py-3 rounded-lg shadow hover:bg-blue-800 transition">Contact Me</a>
-    </section>
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
 
-    <footer class="bg-gray-900 text-white py-6 text-center">
-        <p>&copy; 2025 Ahmed Mohamed Elmaghlawy. All Rights Reserved.</p>
-    </footer>
+          ${project.media.map(media=>{
+
+            const isVideo =
+            media.endsWith(".mp4");
+
+            if(isVideo){
+
+              return `
+
+              <video
+              controls
+              autoplay
+              muted
+              loop
+              class="rounded-[30px] w-full">
+
+                <source
+                src="${media}"
+                type="video/mp4">
+
+              </video>
+
+              `;
+
+            }
+
+            return `
+
+            <img
+            src="${media}"
+            class="rounded-[30px] w-full">
+
+            `;
+
+          }).join("")}
+
+        </div>
+
+        <a
+        href="${project.website}"
+        target="_blank"
+        class="bg-[#5e9bd9] text-white px-8 py-4 rounded-2xl inline-flex items-center gap-3 hover:scale-105 transition">
+
+          <i class="ri-external-link-line"></i>
+
+          Open Project
+
+        </a>
+
+      `;
+
+    }
+
+    document.getElementById("closeModal")
+    .onclick = ()=>{
+
+      modal.style.display = "none";
+
+    };
+
+    // Theme
+
+    const body =
+    document.body;
+
+    const themeToggle =
+    document.getElementById("themeToggle");
+
+    let darkMode = false;
+
+    themeToggle.onclick = ()=>{
+
+      darkMode = !darkMode;
+
+      if(darkMode){
+
+        body.classList.remove("light");
+        body.classList.add("dark");
+
+        themeToggle.innerHTML = "🌙";
+
+      }
+
+      else{
+
+        body.classList.remove("dark");
+        body.classList.add("light");
+
+        themeToggle.innerHTML = "☀️";
+
+      }
+
+    };
+
+    // Language
+
+    const langToggle =
+    document.getElementById("langToggle");
+
+    let arabic = false;
+
+    langToggle.onclick = ()=>{
+
+      arabic = !arabic;
+
+      if(arabic){
+
+        document.documentElement.dir = "rtl";
+        langToggle.innerHTML = "🇦🇪";
+
+      }
+
+      else{
+
+        document.documentElement.dir = "ltr";
+        langToggle.innerHTML = "🇬🇧";
+
+      }
+
+    };
+
+    // Animations
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from("section",{
+      opacity:0,
+      y:50,
+      duration:1,
+      stagger:.2,
+      ease:"power3.out"
+    });
+
+  </script>
 
 </body>
 </html>
